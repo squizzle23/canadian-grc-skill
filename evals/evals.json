@@ -1,0 +1,436 @@
+{
+  "skill_name": "canadian-grc",
+  "version": "1.0.0",
+  "description": "35 test cases (7 regulator groups × 5 cases) with 5 verifiable assertions each = 175 total assertions. Grades skill-assisted vs. baseline Claude responses for Canadian GRC regulatory questions.",
+  "grouping": {
+    "osfi": [1, 2, 3, 4, 5],
+    "fsra": [6, 7, 8, 9, 10],
+    "bcfsa": [11, 12, 13, 14, 15],
+    "amf-loi25": [16, 17, 18, 19, 20],
+    "ciro": [21, 22, 23, 24, 25],
+    "aer": [26, 27, 28, 29, 30],
+    "canadian-privacy": [31, 32, 33, 34, 35]
+  },
+  "evals": [
+    {
+      "id": 1,
+      "regulator": "osfi",
+      "prompt": "We're a Schedule I bank operating in Canada. Walk me through the incident reporting obligations we have under OSFI if we discover a material cyber security incident on a Tuesday at 2pm.",
+      "expectations": [
+        "References the OSFI Technology and Cyber Security Incident Reporting Advisory dated August 13, 2021",
+        "States the 24-hour initial notification timeline",
+        "Identifies that notification goes to both the Technology Risk Division and the Lead Supervisor",
+        "Appends the PIPEDA privacy overlay obligation to notify the OPC (Office of the Privacy Commissioner)",
+        "Mentions that PIPEDA requires 24-month record retention for breaches regardless of whether they meet the real-risk-of-significant-harm threshold"
+      ]
+    },
+    {
+      "id": 2,
+      "regulator": "osfi",
+      "prompt": "Explain the key difference between OSFI B-10 third-party risk management requirements and prior versions of B-10 — specifically around continuous monitoring.",
+      "expectations": [
+        "Identifies the current B-10 as effective April 30, 2023",
+        "States that continuous monitoring now applies to ALL third-party arrangements, not just material ones",
+        "Cites B-10 Section 2.4 (Monitoring and reporting)",
+        "Notes that this is a key shift from the prior version of B-10",
+        "Applies to federally regulated financial institutions (FRFIs) — banks, insurers, trust and loan"
+      ]
+    },
+    {
+      "id": 3,
+      "regulator": "osfi",
+      "prompt": "What are the three top-level domains of OSFI B-13 and what does each cover at a high level?",
+      "expectations": [
+        "Identifies the three top-level domains as: Governance and risk management, Technology operations and resilience, Cyber security",
+        "States B-13 is effective July 31, 2022",
+        "Mentions board-level accountability is required",
+        "References the cyber security domain as covering identify, defend, detect, respond/recover/learn",
+        "Mentions the companion Incident Reporting Advisory published August 13, 2021"
+      ]
+    },
+    {
+      "id": 4,
+      "regulator": "osfi",
+      "prompt": "Our OSFI examination is next quarter. What kind of evidence will OSFI actually want to see to show that our patch management program meets B-13 expectations?",
+      "expectations": [
+        "Cites B-13 Section 2.6 (Patch management) specifically",
+        "References that evidence must be contemporaneous — generated at the time the control operated",
+        "Mentions attribution — evidence should show who performed actions and when",
+        "Mentions completeness — coverage of the full examination period without gaps",
+        "Notes that OSFI conducts supervisory examinations (not SOC 2 audits) but evidentiary logic is similar"
+      ]
+    },
+    {
+      "id": 5,
+      "regulator": "osfi",
+      "prompt": "We're a federally regulated insurer. Does a SOC 2 Type 2 report from our cloud vendor satisfy our OSFI B-10 obligations regarding that vendor?",
+      "expectations": [
+        "Clearly states that SOC 2 does NOT satisfy B-10 obligations",
+        "Explains that SOC 2 is partial vendor evidence, not regulatory compliance",
+        "References B-10's continuous monitoring requirement (Section 2.4)",
+        "Mentions that out-of-Canada vendor arrangements require specific consideration under B-10 Section 2.2.2.3",
+        "Notes that framework adjacency (SOC 2, ISO 27001, NIST CSF) are assurance frameworks, not Canadian regulation"
+      ]
+    },
+    {
+      "id": 6,
+      "regulator": "fsra",
+      "prompt": "We're an Ontario credit union. What are our obligations under FSRA's IT Risk Management Guidance?",
+      "expectations": [
+        "Identifies FSRA IT Risk Management Guidance by its identifier GR0016INT",
+        "States the effective date of April 1, 2024",
+        "Mentions the seven Practices structure",
+        "Notes that FSRA's guidance mirrors OSFI direction with proportionality for smaller entities",
+        "References the Ontario scope — FSRA regulates Ontario credit unions, provincial insurers, and pensions"
+      ]
+    },
+    {
+      "id": 7,
+      "regulator": "fsra",
+      "prompt": "A ransomware attack hit our Ontario credit union yesterday. Member banking data was accessed. Walk me through every reporting obligation we have.",
+      "expectations": [
+        "Identifies FSRA as the sector regulator for Ontario credit unions",
+        "References FSRA's Practice 7 (or equivalent) requiring notification of material IT risk incidents",
+        "Identifies PIPEDA breach notification obligation to the OPC as the privacy overlay",
+        "States PIPEDA's 'as soon as feasible' standard for breach notification where real risk of significant harm exists",
+        "Mentions notification obligations to affected individuals under PIPEDA"
+      ]
+    },
+    {
+      "id": 8,
+      "regulator": "fsra",
+      "prompt": "Does FSRA IT Risk Guidance apply to my Schedule I bank?",
+      "expectations": [
+        "Clearly states that FSRA does NOT regulate Schedule I banks",
+        "Identifies OSFI as the federal regulator for Schedule I banks",
+        "Explains that FSRA is a provincial regulator for Ontario",
+        "Identifies FSRA's actual scope: Ontario credit unions, provincial insurers, pensions",
+        "References the jurisdictional framework distinguishing federal vs provincial regulators"
+      ]
+    },
+    {
+      "id": 9,
+      "regulator": "fsra",
+      "prompt": "Compare FSRA's Operational Risk and Resilience guidance to OSFI's E-21. Are they meant to do the same thing?",
+      "expectations": [
+        "Identifies FSRA's guidance as CU0088APP effective March 1, 2024",
+        "Identifies OSFI E-21 as the federal equivalent updated August 22, 2024",
+        "Notes that both cover operational resilience concepts",
+        "References proportionality — FSRA applies these concepts to smaller provincial entities",
+        "Mentions CU0088APP is specifically for Ontario credit unions"
+      ]
+    },
+    {
+      "id": 10,
+      "regulator": "fsra",
+      "prompt": "Our Ontario credit union uses a US-based cloud provider. What does FSRA expect us to do about that?",
+      "expectations": [
+        "References FSRA's expectations around outsourcing and third-party risk (Practice 4 or equivalent)",
+        "Notes that credit unions are accountable for IT risk at their vendors regardless of contract terms",
+        "Appends the PIPEDA privacy overlay for cross-border data transfer",
+        "Mentions continuous monitoring expectations",
+        "Does not claim US cloud use is prohibited — frames it as requiring documented risk assessment"
+      ]
+    },
+    {
+      "id": 11,
+      "regulator": "bcfsa",
+      "prompt": "I'm a BC credit union. What third-party risk management framework applies to me?",
+      "expectations": [
+        "Identifies BCFSA as the provincial regulator for BC credit unions",
+        "References the BCFSA Third-Party Risk Management Guideline dated October 28, 2025",
+        "Notes the effective date of January 1, 2028",
+        "States the BCFSA guideline is explicitly a BCFSA version of OSFI B-10 adapted for BC",
+        "Identifies the privacy overlay as PIPA BC, not PIPEDA"
+      ]
+    },
+    {
+      "id": 12,
+      "regulator": "bcfsa",
+      "prompt": "What's the BCFSA Information Security Guideline and who does it apply to?",
+      "expectations": [
+        "Identifies the BCFSA Information Security Guideline dated March 2025",
+        "States it applies to BC credit unions, provincial insurers, and trust companies",
+        "Notes BCFSA is the provincial regulator for British Columbia",
+        "Mentions alignment with OSFI approach where applicable",
+        "References the privacy overlay as PIPA BC"
+      ]
+    },
+    {
+      "id": 13,
+      "regulator": "bcfsa",
+      "prompt": "I'm a BC insurer — does OSFI or BCFSA regulate me?",
+      "expectations": [
+        "States that BC provincial insurers are regulated by BCFSA, not OSFI",
+        "Notes OSFI only regulates federally registered insurers",
+        "Identifies BCFSA as the BC regulator for provincial insurance",
+        "Mentions the privacy overlay is PIPA BC",
+        "Does not misapply federal OSFI guidelines to provincial entities"
+      ]
+    },
+    {
+      "id": 14,
+      "regulator": "bcfsa",
+      "prompt": "How long do I have before the new BCFSA Third-Party Risk Management Guideline actually takes effect, and what should I be doing now?",
+      "expectations": [
+        "States the effective date of January 1, 2028",
+        "Notes the guideline was published October 28, 2025",
+        "Identifies this as a BCFSA version of OSFI B-10",
+        "Suggests using the implementation window to build continuous monitoring capability",
+        "References that the guideline applies to all third-party arrangements, not just material ones (per B-10 alignment)"
+      ]
+    },
+    {
+      "id": 15,
+      "regulator": "bcfsa",
+      "prompt": "If our BC credit union has a cyber incident involving member data, who do we notify?",
+      "expectations": [
+        "Identifies BCFSA as the sector regulator for the incident notification",
+        "Identifies the BC Office of the Information and Privacy Commissioner (OIPC BC) as the privacy regulator under PIPA BC",
+        "Notes PIPA BC as the applicable privacy law (not PIPEDA for BC intra-provincial activity)",
+        "References the BCFSA Information Security Guideline framework",
+        "Mentions notification to affected individuals as a separate obligation"
+      ]
+    },
+    {
+      "id": 16,
+      "regulator": "amf-loi25",
+      "prompt": "I'm a Quebec financial institution. Summarize my regulatory stack for IT and cyber.",
+      "expectations": [
+        "Identifies AMF as the Quebec provincial regulator",
+        "References the AMF ICT Risk Management Guideline dated February 2020",
+        "Identifies the AMF Information Security Incident Regulation with its Application and Implementation Guide (July 10, 2025)",
+        "Identifies Loi 25 (Quebec Law 25) as the privacy overlay",
+        "Notes Loi 25 as chapter P-39.1 — Act Respecting the Protection of Personal Information in the Private Sector"
+      ]
+    },
+    {
+      "id": 17,
+      "regulator": "amf-loi25",
+      "prompt": "What's the Loi 25 breach notification standard?",
+      "expectations": [
+        "Identifies the reporting authority as the Commission d'accès à l'information (CAI)",
+        "States the 'with diligence' notification standard for confidentiality incidents",
+        "Notes Loi 25 applies to Quebec private-sector organizations",
+        "References the risk-of-serious-injury threshold for notifying affected individuals",
+        "Mentions the statute chapter P-39.1 or Act Respecting the Protection of Personal Information in the Private Sector"
+      ]
+    },
+    {
+      "id": 18,
+      "regulator": "amf-loi25",
+      "prompt": "Does a SOC 2 report satisfy AMF ICT Risk Management Guideline requirements?",
+      "expectations": [
+        "States that SOC 2 does NOT satisfy AMF regulatory obligations",
+        "Explains SOC 2 is assurance, not regulation",
+        "Does not satisfy Loi 25 privacy impact assessment (PIA) requirements",
+        "Does not satisfy Loi 25 consent standards",
+        "Mentions that a Canadian privacy notice must be written to applicable law, not AICPA Privacy TSC"
+      ]
+    },
+    {
+      "id": 19,
+      "regulator": "amf-loi25",
+      "prompt": "Our Quebec credit union is onboarding a SaaS vendor hosted in the US. What are the specific Loi 25 considerations?",
+      "expectations": [
+        "Identifies cross-border data transfer triggers under Loi 25",
+        "Mentions the requirement for a privacy impact assessment (PIA)",
+        "Notes Loi 25 creates the strictest consent and cross-border regime in Canada",
+        "References explicit consent standards",
+        "Mentions AMF ICT guideline still applies as sector regulator for the credit union itself"
+      ]
+    },
+    {
+      "id": 20,
+      "regulator": "amf-loi25",
+      "prompt": "We had a ransomware incident at our Quebec insurance company. Personal information is likely affected. What clocks are running?",
+      "expectations": [
+        "Identifies AMF as the sector regulator with reporting obligations under the Information Security Incident Regulation",
+        "Identifies CAI as the privacy regulator under Loi 25",
+        "States the Loi 25 'with diligence' notification standard for CAI",
+        "Mentions notification to affected individuals",
+        "References the AMF Application and Implementation Guide dated July 10, 2025"
+      ]
+    },
+    {
+      "id": 21,
+      "regulator": "ciro",
+      "prompt": "I run an investment dealer. What's my cyber reporting obligation under CIRO Rule 3703?",
+      "expectations": [
+        "Identifies CIRO Rule 3703 as the reporting rule",
+        "States the 3 calendar day initial notification timeline",
+        "Mentions the 30-day full report timeline",
+        "Identifies CIRO as the national SRO for investment dealers (formerly IIROC, merged 2023)",
+        "References the IDPC (Investment Dealer and Partially Consolidated) Rules dated February 22, 2024"
+      ]
+    },
+    {
+      "id": 22,
+      "regulator": "ciro",
+      "prompt": "Are the IIROC Cybersecurity documents from 2020 still valid under CIRO?",
+      "expectations": [
+        "Confirms the IIROC-era cybersecurity documents from 2020 are still in force under CIRO",
+        "Identifies CIRO as the post-merger name (IIROC and MFDA merged in 2023)",
+        "References the Cyber Governance Guide dated January 31, 2020",
+        "Mentions at least one other IIROC-era document still applicable (Best Practices Guide, Cyber Incident Management Planning, or Ransomware Playbook)",
+        "Advises citing them as 'IIROC [doc] (still applicable under CIRO)' for precision"
+      ]
+    },
+    {
+      "id": 23,
+      "regulator": "ciro",
+      "prompt": "What does CIRO align its cyber governance expectations to?",
+      "expectations": [
+        "Identifies NIST CSF as the primary alignment framework",
+        "References the CIRO Cyber Governance Guide specifically",
+        "Mentions the Identify, Protect, Detect, Respond, Recover function structure",
+        "Notes NIST CSF as a control reference model, not a certification",
+        "Does not claim NIST CSF satisfies CIRO obligations on its own"
+      ]
+    },
+    {
+      "id": 24,
+      "regulator": "ciro",
+      "prompt": "Our dealer got hit with ransomware. What resources does CIRO publish specifically for this?",
+      "expectations": [
+        "Identifies the CIRO Ransomware Response Playbook as the primary resource",
+        "References the Cyber Incident Management Planning Guide",
+        "Mentions Rule 3703 reporting obligations (3-day / 30-day)",
+        "Identifies the Cybersecurity Best Practices Guide as general reference",
+        "Notes the Fundamentals of Technology Risk Management as broader context"
+      ]
+    },
+    {
+      "id": 25,
+      "regulator": "ciro",
+      "prompt": "If a dealer's cyber incident also involves personal information of Quebec clients, what additional privacy regime applies?",
+      "expectations": [
+        "Identifies Loi 25 as the applicable Quebec privacy law",
+        "States that Loi 25 applies to Quebec personal information regardless of CIRO jurisdiction",
+        "Identifies CAI as the privacy regulator",
+        "Notes the 'with diligence' notification standard",
+        "References PIPEDA as the default privacy framework for non-Quebec personal information held by the dealer"
+      ]
+    },
+    {
+      "id": 26,
+      "regulator": "aer",
+      "prompt": "We operate a pipeline in Alberta. What does Regulation 84/2024 require of us?",
+      "expectations": [
+        "Identifies Alberta Regulation 84/2024 — Security Management for Critical Infrastructure",
+        "States it mandates a Security Management Plan aligned with CSA Z246.1",
+        "References the scope: physical, cyber, and personnel security for in-scope facilities",
+        "Notes the critical infrastructure list is confidential (operators are notified if in scope)",
+        "Identifies this as an OT-world regulation, not corporate IT — SCADA, substations, pipelines, processing plants"
+      ]
+    },
+    {
+      "id": 27,
+      "regulator": "aer",
+      "prompt": "What's the difference between AER Reg 84 scope and OSFI B-13 scope for a cyber team?",
+      "expectations": [
+        "Clearly distinguishes OT (Reg 84) from IT (B-13)",
+        "Notes Reg 84 applies to Alberta energy critical infrastructure",
+        "Notes B-13 applies to federally regulated financial institutions",
+        "Mentions different threat models — Reg 84 targets terrorist/safety, B-13 targets institution cyber",
+        "Warns against applying IT-centric frameworks (B-13) to OT operations"
+      ]
+    },
+    {
+      "id": 28,
+      "regulator": "aer",
+      "prompt": "Who can audit us against Reg 84 and what's our shutdown risk if we fail?",
+      "expectations": [
+        "Identifies the AER (Alberta Energy Regulator) as the audit authority",
+        "References AER audit authority under Section 3(5) of Reg 84",
+        "Mentions shut-in authority under Section 3(2)(b)",
+        "Notes audit is at the regulator's discretion (not calendar-driven)",
+        "References capacity-to-implement as an evaluable criterion under 3(5)(b)"
+      ]
+    },
+    {
+      "id": 29,
+      "regulator": "aer",
+      "prompt": "Does Reg 84 specify detailed cyber controls or does it defer to another standard?",
+      "expectations": [
+        "States Reg 84 itself has no prescriptive controls — it mandates CSA Z246.1 alignment",
+        "Identifies CSA Z246.1 as the standard",
+        "Notes CSA Z246.1 is paywalled (CSA Group copyright)",
+        "Advises against fabricating CSA Z246.1 section numbers",
+        "Mentions that an SMP (Security Management Plan) aligned to Z246.1 is the actual deliverable"
+      ]
+    },
+    {
+      "id": 30,
+      "regulator": "aer",
+      "prompt": "What's the privacy overlay for an AER-regulated operator?",
+      "expectations": [
+        "Identifies PIPA Alberta (PIPA AB) as the primary privacy overlay",
+        "Notes that Reg 84 does not directly engage personal information",
+        "Mentions PIPEDA may apply for inter-provincial or federal-works commercial activity",
+        "References Bill C-26 as potentially applicable when in force (for designated energy operators)",
+        "States PIPA AB applies to customer, employee, and third-party personal information"
+      ]
+    },
+    {
+      "id": 31,
+      "regulator": "canadian-privacy",
+      "prompt": "What's the PIPEDA breach notification threshold?",
+      "expectations": [
+        "States the 'real risk of significant harm' (RROSH) threshold",
+        "References PIPEDA Section 10.1 for breach notification",
+        "Notes notification to OPC (Office of the Privacy Commissioner)",
+        "Mentions notification to affected individuals",
+        "References the 24-month record retention requirement for all breaches (reportable or not)"
+      ]
+    },
+    {
+      "id": 32,
+      "regulator": "canadian-privacy",
+      "prompt": "Our Ontario hospital had a records breach. Is this PIPEDA or something else?",
+      "expectations": [
+        "Identifies PHIPA (Personal Health Information Protection Act) as the applicable law",
+        "Identifies the IPC Ontario (Information and Privacy Commissioner) as the regulator",
+        "Notes the health information custodian (HIC) framework",
+        "States the 'at the first reasonable opportunity' notification standard to individuals",
+        "Notes PIPEDA does not apply because PHIPA is substantially similar provincial legislation for health data"
+      ]
+    },
+    {
+      "id": 33,
+      "regulator": "canadian-privacy",
+      "prompt": "If my tech company sells into an OSFI-regulated bank, what privacy regime do I need to think about?",
+      "expectations": [
+        "Identifies PIPEDA as the primary privacy framework for the tech company (federally regulated activity or cross-provincial commercial activity)",
+        "Notes that customer (bank) requirements flow through the contract",
+        "Mentions provincial privacy law may apply depending on where personal information is collected",
+        "References that the tech company is not directly OSFI-regulated",
+        "Notes B-10 third-party risk flows down the bank's expectations to the tech vendor"
+      ]
+    },
+    {
+      "id": 34,
+      "regulator": "canadian-privacy",
+      "prompt": "What's the difference between PIPEDA, Loi 25, PIPA BC, and PIPA AB?",
+      "expectations": [
+        "Identifies PIPEDA as the federal baseline for commercial activity",
+        "Identifies Loi 25 as Quebec's modernized private-sector privacy law",
+        "Identifies PIPA BC and PIPA AB as BC and Alberta provincial private-sector privacy laws",
+        "Notes that Quebec/BC/Alberta have substantially-similar legislation so PIPEDA applies mainly to federal-works or inter-provincial commercial activity",
+        "Mentions Loi 25 as the strictest consent and cross-border regime in Canada"
+      ]
+    },
+    {
+      "id": 35,
+      "regulator": "canadian-privacy",
+      "prompt": "We had a confirmed breach affecting customers in Ontario, Quebec, and BC. Which privacy commissioners do we notify?",
+      "expectations": [
+        "Identifies the OPC (federal) as a potential notify target for federally applicable breaches",
+        "Identifies the CAI Quebec for Quebec personal information under Loi 25",
+        "Identifies the OIPC BC for BC personal information under PIPA BC",
+        "Notes that Ontario does not have a private-sector law equivalent — PIPEDA applies for Ontario commercial activity (unless health data triggers PHIPA and IPC Ontario)",
+        "Mentions that notification thresholds differ between jurisdictions (PIPEDA real-risk-of-significant-harm, Loi 25 'with diligence' standard)"
+      ]
+    }
+  ]
+}
