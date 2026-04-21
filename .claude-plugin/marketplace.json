@@ -1,0 +1,15 @@
+{
+     "$schema": "https://claude.ai/schemas/claude-plugin-marketplace.json",
+     "name": "canadian-grc",
+     "displayName": "Canadian GRC & Cyber Law",
+     "description": "Expert Canadian Governance, Risk, and Compliance advisor covering OSFI, FSRA, BCFSA, AMF, CIRO, AER, PIPEDA, PHIPA, PIPA BC, PIPA AB, Loi 25, Bill C-26, and AIDA.",
+     "version": "1.0.0",
+     "plugins": [
+       {
+         "name": "canadian-grc",
+         "type": "skill",
+         "path": "./skill",
+         "description": "Canadian GRC & Cyber Law advisor — federal and provincial regulatory guidance grounded in OSFI, FSRA, BCFSA, AMF, CIRO, AER, and Canadian privacy legislation."
+       }
+     ]
+   }
