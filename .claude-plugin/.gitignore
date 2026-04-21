@@ -1,0 +1,41 @@
+# OS cruft
+   .DS_Store
+   Thumbs.db
+   desktop.ini
+
+   # Editor and IDE
+   .vscode/
+   .idea/
+   *.swp
+   *.swo
+   *~
+   .project
+   .settings/
+
+   # Claude Code local state
+   .claude/
+   .claude-code/
+
+   # Python
+   __pycache__/
+   *.py[cod]
+   *.egg-info/
+   .venv/
+   venv/
+   env/
+
+   # Node (if any tooling is added later)
+   node_modules/
+   npm-debug.log*
+   yarn-debug.log*
+   yarn-error.log*
+
+   # Archive outputs
+   *.zip
+   *.tar.gz
+   *.tgz
+
+   # Private reference PDFs — this repo ships with analytical summaries only.
+   # Actual regulator PDFs should be retrieved from the regulator's own website.
+   skill/references/regulators/*.pdf
+   skill/references/regulators/*.docx
